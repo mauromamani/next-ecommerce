@@ -9,7 +9,7 @@ export const ProductMutation = extendType({
       args: {
         data: nonNull(arg({ type: 'CreateProductInput' })),
       },
-      resolve: async (_root, { data }, ctx) => {
+      resolve: (_root, { data }, ctx) => {
         return ctx.prisma.product.create({ data });
       },
     });
