@@ -1,7 +1,7 @@
-import { Hello } from '@/components/Hello';
+import { NavBar } from '@/components/Navbar';
 
 function HomePage() {
-  return <Hello />;
+  return <NavBar />;
 }
 
 export default HomePage;
