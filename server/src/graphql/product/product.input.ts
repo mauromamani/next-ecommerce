@@ -6,5 +6,6 @@ export const CreateProductInput = inputObjectType({
     t.nonNull.string('title');
     t.nonNull.string('description');
     t.nonNull.float('price');
+    t.nonNull.string('img');
   },
 });
