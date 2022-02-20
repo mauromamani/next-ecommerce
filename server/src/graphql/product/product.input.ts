@@ -5,6 +5,6 @@ export const CreateProductInput = inputObjectType({
   definition: (t) => {
     t.nonNull.string('title');
     t.nonNull.string('description');
-    t.nonNull.int('price');
+    t.nonNull.float('price');
   },
 });

@@ -6,7 +6,7 @@ export const ProductType = objectType({
     t.nonNull.id('id');
     t.nonNull.string('title');
     t.nonNull.string('description');
-    t.nonNull.int('price');
+    t.nonNull.float('price');
     t.nonNull.date('createdAt');
     t.nonNull.date('updatedAt');
   },
