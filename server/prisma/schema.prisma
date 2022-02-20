@@ -19,3 +19,14 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 }
+
+model Product {
+  @@map(name: "products")
+
+  id          String @default(uuid()) @id
+  title       String
+  description String
+  price       Int
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+}
