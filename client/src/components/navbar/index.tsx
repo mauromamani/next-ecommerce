@@ -1,4 +1,4 @@
-import { Box, Heading, Stack } from '@chakra-ui/react';
+import { Box, Button, Heading, Stack } from '@chakra-ui/react';
 import { MdSearch, MdShoppingCart } from 'react-icons/md';
 
 import { Link } from './Link';
@@ -38,7 +38,9 @@ export const Navbar = () => {
 
       <Stack direction={['row']} spacing="4" alignItems="center" textColor={'gray.600'}>
         <Box display={{ base: 'none', sm: 'block' }}>
-          <MdSearch size={'30px'} />
+          <Button>
+            <MdSearch size={'30px'} />
+          </Button>
         </Box>
         <Box>
           <Link href="/cart">
@@ -46,9 +48,9 @@ export const Navbar = () => {
           </Link>
         </Box>
         <Box>
-          <Box cursor={'pointer'} fontWeight="semibold">
+          <Button colorScheme={'gray'} variant={'ghost'}>
             Menu
-          </Box>
+          </Button>
         </Box>
       </Stack>
     </Box>
