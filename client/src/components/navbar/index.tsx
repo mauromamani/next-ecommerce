@@ -10,7 +10,7 @@ export const Navbar = () => {
       justifyContent={'space-between'}
       alignItems={'center'}
       paddingX={{ base: '4', sm: '6', md: '8' }}
-      paddingTop={'2'}>
+      paddingY={'2'}>
       <Box>
         <Link href="/">
           <Heading size={'md'} fontWeight="light">
@@ -36,16 +36,16 @@ export const Navbar = () => {
         </Link>
       </Stack>
 
-      <Stack direction={['row']} spacing="4" alignItems="center" textColor={'gray.600'}>
+      <Stack direction={['row']} alignItems="center" textColor={'gray.600'}>
         <Box display={{ base: 'none', sm: 'block' }}>
           <Button>
             <MdSearch size={'30px'} />
           </Button>
         </Box>
         <Box>
-          <Link href="/cart">
+          <Button>
             <MdShoppingCart size={'30px'} />
-          </Link>
+          </Button>
         </Box>
         <Box>
           <Button colorScheme={'gray'} variant={'ghost'}>
