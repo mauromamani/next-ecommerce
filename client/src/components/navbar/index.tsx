@@ -3,7 +3,7 @@ import { MdSearch, MdShoppingCart } from 'react-icons/md';
 
 import { Link } from './Link';
 
-export const NavBar = () => {
+export const Navbar = () => {
   return (
     <Box
       display={'flex'}
