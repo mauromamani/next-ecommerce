@@ -7,7 +7,7 @@ interface IProps {}
 
 export const Layout: FC<IProps> = ({ children }) => {
   return (
-    <Box backgroundColor={'gray.100'}>
+    <Box backgroundColor={'gray.100'} height="100vh">
       <Navbar />
       {children}
     </Box>
