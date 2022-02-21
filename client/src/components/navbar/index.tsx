@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Stack } from '@chakra-ui/react';
+import { Box, Button, Heading, Stack, Tooltip } from '@chakra-ui/react';
 import { MdSearch, MdShoppingCart } from 'react-icons/md';
 
 import { Link } from './Link';
@@ -38,14 +38,18 @@ export const Navbar = () => {
 
       <Stack direction={['row']} alignItems="center" textColor={'gray.600'}>
         <Box display={{ base: 'none', sm: 'block' }}>
-          <Button>
-            <MdSearch size={'30px'} />
-          </Button>
+          <Tooltip label="Busca un producto">
+            <Button>
+              <MdSearch size={'30px'} />
+            </Button>
+          </Tooltip>
         </Box>
         <Box>
-          <Button>
-            <MdShoppingCart size={'30px'} />
-          </Button>
+          <Tooltip label="Carrito">
+            <Button>
+              <MdShoppingCart size={'30px'} />
+            </Button>
+          </Tooltip>
         </Box>
         <Box>
           <Button colorScheme={'gray'} variant={'ghost'}>
