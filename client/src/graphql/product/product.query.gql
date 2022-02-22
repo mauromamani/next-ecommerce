@@ -7,3 +7,13 @@ query getAllProducts {
     img
   }
 }
+
+query getProductById($getProductByIdId: ID!) {
+  getProductById(id: $getProductByIdId) {
+    id
+    title
+    description
+    price
+    img
+  }
+}
