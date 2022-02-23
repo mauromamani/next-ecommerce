@@ -1,23 +1,19 @@
 import { Box, Grid } from '@chakra-ui/react';
+import { GetServerSideProps } from 'next';
+import { withUrqlClient } from 'next-urql';
 
 import { ProductCard } from '@/components/products/productCard';
 import { useAllProductsQuery } from '@/graphql/@types';
+import { ALL_PRODUCTS } from '@/graphql/product/product.query';
+import { client, ssrCache } from '@/graphql/urql-client';
 
 const ProductsPage = () => {
-  const [query] = useAllProductsQuery();
-
-  if (query.fetching) {
-    return <Box textAlign={'center'}>Fetching...</Box>;
-  }
-
-  if (query.error) {
-    return <Box>Error</Box>;
-  }
+  const [{ data }] = useAllProductsQuery();
 
   return (
     <Box paddingX="6">
       <Grid templateColumns="repeat(4, 1fr)" gap={6}>
-        {query.data?.getAllProducts.map((product) => (
+        {data?.getAllProducts.map((product) => (
           <ProductCard {...product} key={product.id} />
         ))}
       </Grid>
@@ -25,4 +21,19 @@ const ProductsPage = () => {
   );
 };
 
-export default ProductsPage;
+export const getServerSideProps: GetServerSideProps = async () => {
+  await client?.query(ALL_PRODUCTS).toPromise();
+
+  return {
+    props: {
+      urqlState: ssrCache.extractData(),
+    },
+  };
+};
+
+export default withUrqlClient(
+  () => ({
+    url: 'http://localhost:3000',
+  }),
+  { ssr: false, neverSuspend: true },
+)(ProductsPage);
