@@ -1,10 +1,10 @@
 import { Box, Grid } from '@chakra-ui/react';
 
 import { ProductCard } from '@/components/products/productCard';
-import { useGetAllProductsQuery } from '@/graphql/@types';
+import { useAllProductsQuery } from '@/graphql/@types';
 
 const ProductsPage = () => {
-  const [query] = useGetAllProductsQuery();
+  const [query] = useAllProductsQuery();
 
   if (query.fetching) {
     return <Box textAlign={'center'}>Fetching...</Box>;
@@ -13,8 +13,6 @@ const ProductsPage = () => {
   if (query.error) {
     return <Box>Error</Box>;
   }
-
-  console.log(query.data?.getAllProducts);
 
   return (
     <Box paddingX="6">

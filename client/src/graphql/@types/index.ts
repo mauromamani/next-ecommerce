@@ -101,21 +101,21 @@ export type User = {
   updatedAt: Scalars['DateTime'];
 };
 
-export type GetAllProductsQueryVariables = Exact<{ [key: string]: never; }>;
+export type AllProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllProductsQuery = { __typename?: 'Query', getAllProducts: Array<{ __typename?: 'Product', id: string, title: string, description: string, price: number, img: string }> };
+export type AllProductsQuery = { __typename?: 'Query', getAllProducts: Array<{ __typename?: 'Product', id: string, title: string, description: string, price: number, img: string }> };
 
-export type GetProductByIdQueryVariables = Exact<{
-  getProductByIdId: Scalars['ID'];
+export type ProductByIdQueryVariables = Exact<{
+  id: Scalars['ID'];
 }>;
 
 
-export type GetProductByIdQuery = { __typename?: 'Query', getProductById: { __typename?: 'Product', id: string, title: string, description: string, price: number, img: string } };
+export type ProductByIdQuery = { __typename?: 'Query', getProductById: { __typename?: 'Product', id: string, title: string, description: string, price: number, img: string } };
 
 
-export const GetAllProductsDocument = gql`
-    query getAllProducts {
+export const AllProductsDocument = gql`
+    query allProducts {
   getAllProducts {
     id
     title
@@ -126,12 +126,12 @@ export const GetAllProductsDocument = gql`
 }
     `;
 
-export function useGetAllProductsQuery(options?: Omit<Urql.UseQueryArgs<GetAllProductsQueryVariables>, 'query'>) {
-  return Urql.useQuery<GetAllProductsQuery>({ query: GetAllProductsDocument, ...options });
+export function useAllProductsQuery(options?: Omit<Urql.UseQueryArgs<AllProductsQueryVariables>, 'query'>) {
+  return Urql.useQuery<AllProductsQuery>({ query: AllProductsDocument, ...options });
 };
-export const GetProductByIdDocument = gql`
-    query getProductById($getProductByIdId: ID!) {
-  getProductById(id: $getProductByIdId) {
+export const ProductByIdDocument = gql`
+    query productById($id: ID!) {
+  getProductById(id: $id) {
     id
     title
     description
@@ -141,6 +141,6 @@ export const GetProductByIdDocument = gql`
 }
     `;
 
-export function useGetProductByIdQuery(options: Omit<Urql.UseQueryArgs<GetProductByIdQueryVariables>, 'query'>) {
-  return Urql.useQuery<GetProductByIdQuery>({ query: GetProductByIdDocument, ...options });
+export function useProductByIdQuery(options: Omit<Urql.UseQueryArgs<ProductByIdQueryVariables>, 'query'>) {
+  return Urql.useQuery<ProductByIdQuery>({ query: ProductByIdDocument, ...options });
 };
