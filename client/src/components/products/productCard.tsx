@@ -21,7 +21,10 @@ export const ProductCard: FC<IProps> = ({ img, title, price, id }) => {
         <Stack direction={'column'} spacing="2">
           <Link href={`/products/${id}`}>
             <L>
-              <Heading fontSize={'lg'} fontWeight="medium" textColor={'gray.800'}>
+              <Heading
+                fontSize={['sm', 'md', 'lg']}
+                fontWeight="medium"
+                textColor={'gray.800'}>
                 {title}
               </Heading>
             </L>
