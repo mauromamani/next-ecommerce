@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Alert, AlertDescription, AlertIcon, AlertTitle, Box } from '@chakra-ui/react';
 import { GetServerSideProps } from 'next';
 import { withUrqlClient } from 'next-urql';
 
@@ -8,7 +8,19 @@ import { ALL_PRODUCTS } from '@/graphql/product/product.query';
 import { client, ssrCache } from '@/graphql/urql-client';
 
 const ProductsPage = () => {
-  const [{ data }] = useAllProductsQuery();
+  const [{ data, error }] = useAllProductsQuery();
+
+  if (error) {
+    return (
+      <Box padding={'10'}>
+        <Alert status="error">
+          <AlertIcon />
+          <AlertTitle mr={2}>Ocurrió un Error!</AlertTitle>
+          <AlertDescription>Contacte con el adminstrador del sitio</AlertDescription>
+        </Alert>
+      </Box>
+    );
+  }
 
   return (
     <Box paddingX="6" paddingY="10" backgroundColor={'gray.100'}>
