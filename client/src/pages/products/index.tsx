@@ -1,8 +1,8 @@
-import { Box, SimpleGrid } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { GetServerSideProps } from 'next';
 import { withUrqlClient } from 'next-urql';
 
-import { ProductCard } from '@/components/products/productCard';
+import { ProductGrid } from '@/components/products/productGrid';
 import { useAllProductsQuery } from '@/graphql/@types';
 import { ALL_PRODUCTS } from '@/graphql/product/product.query';
 import { client, ssrCache } from '@/graphql/urql-client';
@@ -12,11 +12,7 @@ const ProductsPage = () => {
 
   return (
     <Box paddingX="6" paddingY="10" backgroundColor={'gray.100'}>
-      <SimpleGrid columns={[1, 2, 3, 4]} gap={6}>
-        {data?.getAllProducts.map((product) => (
-          <ProductCard {...product} key={product.id} />
-        ))}
-      </SimpleGrid>
+      <ProductGrid products={data?.getAllProducts as []} />
     </Box>
   );
 };
