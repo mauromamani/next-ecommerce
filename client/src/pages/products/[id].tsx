@@ -10,7 +10,7 @@ interface IProps {
   id: string;
 }
 
-const ProductItemPage: NextPage<IProps> = ({ id }) => {
+const ProductDetailPage: NextPage<IProps> = ({ id }) => {
   const [{ data, error }] = useProductByIdQuery({ variables: { id } });
 
   if (error) {
@@ -56,4 +56,4 @@ export default withUrqlClient(
     url: 'http://localhost:3000',
   }),
   { ssr: false, neverSuspend: true },
-)(ProductItemPage);
+)(ProductDetailPage);
