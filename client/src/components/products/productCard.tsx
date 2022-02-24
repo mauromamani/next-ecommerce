@@ -1,5 +1,6 @@
-import { Box, GridItem, Heading, Image } from '@chakra-ui/react';
+import { Box, Heading, Icon, Image, Stack, Tooltip } from '@chakra-ui/react';
 import { FC } from 'react';
+import { MdFavorite } from 'react-icons/md';
 
 interface IProps {
   img: string;
@@ -9,20 +10,33 @@ interface IProps {
 
 export const ProductCard: FC<IProps> = ({ img, title, price }) => {
   return (
-    <GridItem w="100%" h="10">
-      <Box rounded={'md'} cursor="pointer" _hover={{ scale: '2' }}>
-        <Box>
-          <Image objectFit={'fill'} width="100%" src={img} />
-        </Box>
-        <Box paddingX={'4'} paddingY={'2'}>
-          <Heading fontSize={'lg'} fontWeight="medium">
+    <Box border={'1px'} borderColor="gray.300" rounded={'md'} backgroundColor="white">
+      <Box>
+        <Image src={img} alt={title} draggable="false" roundedTop={'md'} />
+      </Box>
+
+      <Box paddingX={'4'} paddingY={'2'} display="flex" justifyContent={'space-between'}>
+        <Stack direction={'column'} spacing="2">
+          <Heading fontSize={'lg'} fontWeight="medium" textColor={'gray.800'}>
             {title}
           </Heading>
-          <Heading fontSize={'md'} fontWeight="bold">
+          <Heading fontSize={'sm'} fontWeight="semibold" textColor={'gray.600'}>
             ${price}
           </Heading>
+        </Stack>
+        <Box>
+          <Tooltip label="Agregar a favoritos">
+            <Box>
+              <Icon
+                as={MdFavorite}
+                w={6}
+                h={6}
+                _hover={{ color: 'red.900', cursor: 'pointer' }}
+              />
+            </Box>
+          </Tooltip>
         </Box>
       </Box>
-    </GridItem>
+    </Box>
   );
 };
