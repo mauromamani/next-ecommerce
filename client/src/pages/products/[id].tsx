@@ -1,7 +1,16 @@
-import { Box, Button, Heading, Image, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Heading,
+  Icon,
+  Image,
+  Stack,
+  Text,
+  Tooltip,
+} from '@chakra-ui/react';
 import { GetServerSideProps, NextPage } from 'next';
 import { withUrqlClient } from 'next-urql';
-import { MdAddShoppingCart } from 'react-icons/md';
+import { MdAddShoppingCart, MdFavorite } from 'react-icons/md';
 
 import { useProductByIdQuery } from '@/graphql/@types';
 import { PRODUCT_BY_ID } from '@/graphql/product/product.query';
@@ -35,18 +44,32 @@ const ProductDetailPage: NextPage<IProps> = ({ id }) => {
         />
       </Box>
       <Box w={{ base: '100%', md: '40%', lg: '65%' }} color="gray.700">
-        <Heading fontSize={{ base: 'xl', md: '3xl' }}>
-          {data?.getProductById.title}
-        </Heading>
+        <Box display={'flex'} justifyContent="space-between" paddingRight={'10'}>
+          <Heading fontSize={{ base: 'xl', md: '3xl' }}>
+            {data?.getProductById.title}
+          </Heading>
+          <Tooltip label="Agregar a favoritos">
+            <Box rounded={'full'}>
+              <Icon
+                as={MdFavorite}
+                w={8}
+                h={8}
+                _hover={{ color: 'red.900', cursor: 'pointer' }}
+              />
+            </Box>
+          </Tooltip>
+        </Box>
         <Text marginY={'1rem'}>{data?.getProductById.description}</Text>
         <Heading>${data?.getProductById.price}</Heading>
-        <Button
-          leftIcon={<MdAddShoppingCart size={'20'} />}
-          colorScheme={'teal'}
-          mt="5"
-          boxShadow={'md'}>
-          Agregar al carrito
-        </Button>
+
+        <Stack direction={['row']} mt="5" spacing={'2'}>
+          <Button
+            leftIcon={<MdAddShoppingCart size={'20'} />}
+            colorScheme={'teal'}
+            boxShadow={'md'}>
+            Agregar al carrito
+          </Button>
+        </Stack>
       </Box>
     </Box>
   );
