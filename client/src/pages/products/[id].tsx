@@ -41,10 +41,17 @@ const ProductDetailPage: NextPage<IProps> = ({ id }) => {
           display="block"
           rounded={'md'}
           boxShadow="xl"
+          draggable="false"
         />
       </Box>
-      <Box w={{ base: '100%', md: '40%', lg: '65%' }} color="gray.700">
-        <Box display={'flex'} justifyContent="space-between" paddingRight={'10'}>
+      <Box
+        w={{ base: '100%', md: '40%', lg: '65%' }}
+        color="gray.700"
+        paddingTop={{ base: '10', md: '0' }}>
+        <Box
+          display={'flex'}
+          justifyContent="space-between"
+          paddingRight={{ base: '0', lg: '10' }}>
           <Heading fontSize={{ base: 'xl', md: '3xl' }}>
             {data?.getProductById.title}
           </Heading>
