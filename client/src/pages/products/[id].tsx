@@ -1,6 +1,7 @@
-import { Box, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Button, Heading, Image, Text } from '@chakra-ui/react';
 import { GetServerSideProps, NextPage } from 'next';
 import { withUrqlClient } from 'next-urql';
+import { MdAddShoppingCart } from 'react-icons/md';
 
 import { useProductByIdQuery } from '@/graphql/@types';
 import { PRODUCT_BY_ID } from '@/graphql/product/product.query';
@@ -17,23 +18,35 @@ const ProductDetailPage: NextPage<IProps> = ({ id }) => {
     return <p>ERROR</p>;
   }
 
-  console.log(data);
-
   return (
     <Box
       display={'flex'}
       justifyContent="space-between"
       flexDirection={{ base: 'column', md: 'row' }}
-      paddingX="6"
-      paddingTop={'8'}
+      padding="12"
+      paddingTop={{ base: '0', md: '8' }}
       backgroundColor="gray.100">
-      <Box w={'400px'} h={'600px'}>
-        <Image src={data?.getProductById.img} />
+      <Box w={{ base: '100%', sm: '70%', md: '50%', lg: '35%' }} mr="10">
+        <Image
+          src={data?.getProductById.img}
+          display="block"
+          rounded={'md'}
+          boxShadow="xl"
+        />
       </Box>
-      <Box w="40%">
-        <Heading>{data?.getProductById.title}</Heading>
-        <Text>{data?.getProductById.description}</Text>
+      <Box w={{ base: '100%', md: '40%', lg: '65%' }} color="gray.700">
+        <Heading fontSize={{ base: 'xl', md: '3xl' }}>
+          {data?.getProductById.title}
+        </Heading>
+        <Text marginY={'1rem'}>{data?.getProductById.description}</Text>
         <Heading>${data?.getProductById.price}</Heading>
+        <Button
+          leftIcon={<MdAddShoppingCart size={'20'} />}
+          colorScheme={'teal'}
+          mt="5"
+          boxShadow={'md'}>
+          Agregar al carrito
+        </Button>
       </Box>
     </Box>
   );
