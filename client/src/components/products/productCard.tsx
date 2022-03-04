@@ -12,9 +12,9 @@ interface IProps {
 
 export const ProductCard: FC<IProps> = ({ img, title, price, id }) => {
   return (
-    <Box border={'1px'} borderColor="gray.300" rounded={'md'} backgroundColor="white">
+    <Box backgroundColor="white" boxShadow={'md'}>
       <Box>
-        <Image src={img} alt={title} draggable="false" roundedTop={'md'} />
+        <Image src={img} alt={title} draggable="false" roundedTop={'lg'} />
       </Box>
 
       <Box paddingX={'4'} paddingY={'2'} display="flex" justifyContent={'space-between'}>
