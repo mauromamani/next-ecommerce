@@ -81,10 +81,10 @@ const ProductDetailPage: NextPage<IProps> = ({ id }) => {
             display="flex"
             justifyContent={'space-between'}
             alignItems="center"
-            width="20%"
+            width={{ base: '40%', lg: '20%' }}
             border={'1px'}
             borderColor="gray.300"
-            rounded={'xl'}>
+            rounded={'lg'}>
             <Button
               _focus={{ border: 'none' }}
               onClick={() => setQuantity((q) => q - 1)}
