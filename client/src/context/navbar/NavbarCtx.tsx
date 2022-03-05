@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createContext, Dispatch, FC, SetStateAction, useState } from 'react';
 
 interface ICartProduct {
@@ -9,13 +10,32 @@ interface ICartProduct {
 
 interface INavbarCtx {
   cart: ICartProduct[];
-  setCart: Dispatch<SetStateAction<ICartProduct[]>>;
+  setCartProduct: (product: ICartProduct) => void;
 }
 
-export const NavbarCtx = createContext<INavbarCtx>({ cart: [], setCart: () => {} });
+export const NavbarCtx = createContext<INavbarCtx>({
+  cart: [],
+  setCartProduct: () => {},
+});
 
 export const NavbarProvider: FC = ({ children }) => {
   const [cart, setCart] = useState<ICartProduct[]>([]);
 
-  return <NavbarCtx.Provider value={{ cart, setCart }}>{children}</NavbarCtx.Provider>;
+  const setCartProduct = (product: ICartProduct) => {
+    // check if product exists in cart
+    const exists = cart.find((p) => p.id === product.id);
+
+    if (exists) {
+      // if it exists, increment quantity
+      exists.quantity += product.quantity;
+      setCart((prev) => prev.filter((p) => (p.id === product.id ? { ...exists } : p)));
+    } else {
+      // if it does not exist, add to cart
+      setCart((prev) => [...prev, product]);
+    }
+  };
+
+  return (
+    <NavbarCtx.Provider value={{ cart, setCartProduct }}>{children}</NavbarCtx.Provider>
+  );
 };

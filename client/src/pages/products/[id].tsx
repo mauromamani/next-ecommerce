@@ -26,7 +26,7 @@ interface IProps {
 const ProductDetailPage: NextPage<IProps> = ({ id }) => {
   const [{ data, error }] = useProductByIdQuery({ variables: { id } });
   const [quantity, setQuantity] = useState<number>(1);
-  const { setCart } = useContext(NavbarCtx);
+  const { setCartProduct } = useContext(NavbarCtx);
 
   if (error) {
     return <p>ERROR</p>;
@@ -39,7 +39,7 @@ const ProductDetailPage: NextPage<IProps> = ({ id }) => {
       price: data?.getProductById.price!,
       quantity,
     };
-    setCart((cart) => [...cart, cartProduct]);
+    setCartProduct(cartProduct);
   };
 
   return (
