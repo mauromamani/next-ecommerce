@@ -52,15 +52,15 @@ const ProductDetailPage: NextPage<IProps> = ({ id }) => {
           display={'flex'}
           justifyContent="space-between"
           paddingRight={{ base: '0', lg: '10' }}>
-          <Heading fontSize={{ base: 'xl', md: '3xl' }}>
+          <Heading fontSize={{ base: '2xl', md: '3xl' }}>
             {data?.getProductById.title}
           </Heading>
           <Tooltip label="Agregar a favoritos">
             <Box rounded={'full'}>
               <Icon
                 as={MdFavorite}
-                w={8}
-                h={8}
+                w={9}
+                h={9}
                 _hover={{ color: 'red.900', cursor: 'pointer' }}
               />
             </Box>
