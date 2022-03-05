@@ -1,10 +1,10 @@
 import { createContext, Dispatch, FC, SetStateAction, useState } from 'react';
 
 interface ICartProduct {
-  id: number;
+  id: string;
   name: string;
-  quantity: number;
   price: number;
+  quantity: number;
 }
 
 interface INavbarCtx {

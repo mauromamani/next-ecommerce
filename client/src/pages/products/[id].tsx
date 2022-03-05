@@ -10,10 +10,11 @@ import {
 } from '@chakra-ui/react';
 import { GetServerSideProps, NextPage } from 'next';
 import { withUrqlClient } from 'next-urql';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { HiMinus, HiPlus } from 'react-icons/hi';
 import { MdAddShoppingCart, MdFavorite } from 'react-icons/md';
 
+import { NavbarCtx } from '@/context/navbar/NavbarCtx';
 import { useProductByIdQuery } from '@/graphql/@types';
 import { PRODUCT_BY_ID } from '@/graphql/product/product.query';
 import { client, ssrCache } from '@/graphql/urql-client';
@@ -25,10 +26,21 @@ interface IProps {
 const ProductDetailPage: NextPage<IProps> = ({ id }) => {
   const [{ data, error }] = useProductByIdQuery({ variables: { id } });
   const [quantity, setQuantity] = useState<number>(1);
+  const { setCart } = useContext(NavbarCtx);
 
   if (error) {
     return <p>ERROR</p>;
   }
+
+  const handleAddCart = () => {
+    const cartProduct = {
+      id,
+      name: data?.getProductById.title!,
+      price: data?.getProductById.price!,
+      quantity,
+    };
+    setCart((cart) => [...cart, cartProduct]);
+  };
 
   return (
     <Box
@@ -102,7 +114,8 @@ const ProductDetailPage: NextPage<IProps> = ({ id }) => {
           <Button
             leftIcon={<MdAddShoppingCart size={'20'} />}
             colorScheme={'teal'}
-            boxShadow={'md'}>
+            boxShadow={'md'}
+            onClick={handleAddCart}>
             Agregar al carrito
           </Button>
         </Stack>
