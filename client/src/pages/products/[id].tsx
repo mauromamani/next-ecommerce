@@ -10,6 +10,8 @@ import {
 } from '@chakra-ui/react';
 import { GetServerSideProps, NextPage } from 'next';
 import { withUrqlClient } from 'next-urql';
+import { useState } from 'react';
+import { HiMinus, HiPlus } from 'react-icons/hi';
 import { MdAddShoppingCart, MdFavorite } from 'react-icons/md';
 
 import { useProductByIdQuery } from '@/graphql/@types';
@@ -22,6 +24,7 @@ interface IProps {
 
 const ProductDetailPage: NextPage<IProps> = ({ id }) => {
   const [{ data, error }] = useProductByIdQuery({ variables: { id } });
+  const [quantity, setQuantity] = useState<number>(1);
 
   if (error) {
     return <p>ERROR</p>;
@@ -68,6 +71,32 @@ const ProductDetailPage: NextPage<IProps> = ({ id }) => {
         </Box>
         <Text marginY={'1rem'}>{data?.getProductById.description}</Text>
         <Heading>${data?.getProductById.price}</Heading>
+
+        <Box my="2">
+          <Heading fontSize={'xl'} fontWeight="medium" mb="1">
+            Cantidad:
+          </Heading>
+          <Box
+            padding={2}
+            display="flex"
+            justifyContent={'space-between'}
+            alignItems="center"
+            width="20%"
+            border={'1px'}
+            borderColor="gray.300"
+            rounded={'xl'}>
+            <Button
+              _focus={{ border: 'none' }}
+              onClick={() => setQuantity((q) => q - 1)}
+              disabled={quantity <= 1}>
+              <Icon as={HiMinus} w={5} h={5} />
+            </Button>
+            <Heading fontSize={'xl'}>{quantity}</Heading>
+            <Button _focus={{ border: 'none' }} onClick={() => setQuantity((q) => q + 1)}>
+              <Icon as={HiPlus} w={5} h={5} />
+            </Button>
+          </Box>
+        </Box>
 
         <Stack direction={['row']} mt="5" spacing={'2'}>
           <Button
