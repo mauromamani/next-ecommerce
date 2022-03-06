@@ -23,10 +23,10 @@ export const CartProduct: FC<IProps> = ({ name, price, quantity, img }) => {
         <Box ml={'4'} padding="2">
           <Heading fontSize={'md'}>{name}</Heading>
           <Text>Cantidad: {quantity}</Text>
+          <Text>Precio: ${price}</Text>
         </Box>
       </Box>
       <Box padding="2">
-        <Text fontWeight={'bold'}>Precio Unidad: ${price}</Text>
         <Text fontWeight={'bold'}>Precio Total: ${price * quantity}</Text>
         <Button colorScheme={'red'} mt="3">
           Eliminar

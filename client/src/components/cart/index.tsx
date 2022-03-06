@@ -1,7 +1,8 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Box, Button, Divider, Heading } from '@chakra-ui/react';
 import { FC, useContext } from 'react';
 
 import { NavbarCtx } from '@/context/navbar/NavbarCtx';
+import { getTotalCart } from '@/utils/getTotalCart';
 
 import { CartProduct } from './cartProduct';
 
@@ -9,14 +10,26 @@ export const Cart: FC = () => {
   const { cart } = useContext(NavbarCtx);
 
   return (
-    <Box>
-      <Heading color={'gray.700'} fontWeight="black" mb={'8'}>
+    <Box color={'gray.700'} pb="8">
+      <Heading fontWeight="black" mb={'8'}>
         Tu Carrito ({cart.length})
       </Heading>
 
       {cart.map((p) => (
         <CartProduct key={p.id} {...p} />
       ))}
+
+      {!!cart.length && (
+        <>
+          <Divider my="4" />
+          <Box>
+            <Heading fontSize={'2xl'}>Total Carrito: ${getTotalCart(cart)}</Heading>
+            <Button colorScheme={'green'} mt="4">
+              Comprar Ahora
+            </Button>
+          </Box>
+        </>
+      )}
     </Box>
   );
 };

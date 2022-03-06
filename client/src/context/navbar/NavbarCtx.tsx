@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { createContext, FC, useState } from 'react';
 
-interface ICartProduct {
+export interface ICartProduct {
   id: string;
   name: string;
   price: number;
