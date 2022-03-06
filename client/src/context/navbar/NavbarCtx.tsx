@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { createContext, Dispatch, FC, SetStateAction, useState } from 'react';
+import { createContext, FC, useState } from 'react';
 
 interface ICartProduct {
   id: string;

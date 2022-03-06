@@ -46,9 +46,11 @@ export const Navbar = () => {
         </Box>
         <Box>
           <Tooltip label="Carrito">
-            <Button>
-              <MdShoppingCart size={'30px'} />
-            </Button>
+            <Box>
+              <Link href="/cart">
+                <MdShoppingCart size={'30px'} />
+              </Link>
+            </Box>
           </Tooltip>
         </Box>
         <Box>
