@@ -5,7 +5,7 @@ import { Cart } from '@/components/cart';
 
 const CartPage: NextPage = () => {
   return (
-    <Box backgroundColor={'gray.100'}>
+    <Box backgroundColor={'gray.100'} paddingX="12" paddingTop="6">
       <Cart />
     </Box>
   );
