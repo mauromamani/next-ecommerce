@@ -6,6 +6,7 @@ interface ICartProduct {
   name: string;
   price: number;
   quantity: number;
+  img: string;
 }
 
 interface INavbarCtx {

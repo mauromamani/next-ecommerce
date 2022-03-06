@@ -38,6 +38,7 @@ const ProductDetailPage: NextPage<IProps> = ({ id }) => {
       name: data?.getProductById.title!,
       price: data?.getProductById.price!,
       quantity,
+      img: data?.getProductById.img!,
     };
     setCartProduct(cartProduct);
   };

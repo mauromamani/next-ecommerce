@@ -15,7 +15,7 @@ export const Cart: FC = () => {
       </Heading>
 
       {cart.map((p) => (
-        <CartProduct key={p.id} />
+        <CartProduct key={p.id} {...p} />
       ))}
     </Box>
   );
