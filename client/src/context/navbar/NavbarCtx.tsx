@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { createContext, FC, useState } from 'react';
+import { createContext, FC, useEffect, useState } from 'react';
 
 export interface ICartProduct {
   id: string;
@@ -21,6 +21,18 @@ export const NavbarCtx = createContext<INavbarCtx>({
 
 export const NavbarProvider: FC = ({ children }) => {
   const [cart, setCart] = useState<ICartProduct[]>([]);
+
+  useEffect(() => {
+    const cartJson = localStorage.getItem('cart');
+    if (cartJson) {
+      const cartParsed = JSON.parse(cartJson);
+      setCart(cartParsed);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const setCartProduct = (product: ICartProduct) => {
     // check if product exists in cart
