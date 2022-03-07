@@ -12,7 +12,9 @@ export const Cart: FC = () => {
   return (
     <Box color={'gray.700'} pb="8">
       <Heading fontWeight="black" mb={'8'}>
-        Tu Carrito ({cart.length})
+        {!cart.length
+          ? 'No tenes productos en tu carrito'
+          : `Tu Carrito (${cart.length})`}
       </Heading>
 
       {cart.map((p) => (
