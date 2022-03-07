@@ -14,6 +14,7 @@ import { useContext, useState } from 'react';
 import { HiMinus, HiPlus } from 'react-icons/hi';
 import { MdAddShoppingCart, MdFavorite } from 'react-icons/md';
 
+import { AlertMessage } from '@/components/ui/alertMessage';
 import { NavbarCtx } from '@/context/navbar/NavbarCtx';
 import { useProductByIdQuery } from '@/graphql/@types';
 import { PRODUCT_BY_ID } from '@/graphql/product/product.query';
@@ -29,7 +30,13 @@ const ProductDetailPage: NextPage<IProps> = ({ id }) => {
   const { setCartProduct } = useContext(NavbarCtx);
 
   if (error) {
-    return <p>ERROR</p>;
+    return (
+      <AlertMessage
+        status="error"
+        title="Ocurrió un Error!"
+        description="Contacte con el administrador del sitio"
+      />
+    );
   }
 
   const handleAddCart = () => {
