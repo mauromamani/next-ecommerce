@@ -1,14 +1,23 @@
 import { Box, Button, Heading, Image, Text } from '@chakra-ui/react';
-import { FC } from 'react';
+import { FC, useContext } from 'react';
+
+import { NavbarCtx } from '@/context/navbar/NavbarCtx';
 
 interface IProps {
+  id: string;
   name: string;
   price: number;
   quantity: number;
   img: string;
 }
 
-export const CartProduct: FC<IProps> = ({ name, price, quantity, img }) => {
+export const CartProduct: FC<IProps> = ({ id, name, price, quantity, img }) => {
+  const { removeCartProduct } = useContext(NavbarCtx);
+
+  const handleRemoveProduct = () => {
+    removeCartProduct(id);
+  };
+
   return (
     <Box display={'flex'} justifyContent="space-between" paddingX={'4'} my="6">
       <Box display={'flex'}>
@@ -28,7 +37,7 @@ export const CartProduct: FC<IProps> = ({ name, price, quantity, img }) => {
       </Box>
       <Box padding="2">
         <Text fontWeight={'bold'}>Precio Total: ${price * quantity}</Text>
-        <Button colorScheme={'red'} mt="3">
+        <Button colorScheme={'red'} mt="3" onClick={handleRemoveProduct}>
           Eliminar
         </Button>
       </Box>

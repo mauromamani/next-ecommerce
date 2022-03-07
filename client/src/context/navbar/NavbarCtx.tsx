@@ -12,11 +12,13 @@ export interface ICartProduct {
 interface INavbarCtx {
   cart: ICartProduct[];
   setCartProduct: (product: ICartProduct) => void;
+  removeCartProduct: (id: string) => void;
 }
 
 export const NavbarCtx = createContext<INavbarCtx>({
   cart: [],
   setCartProduct: () => {},
+  removeCartProduct: () => {},
 });
 
 export const NavbarProvider: FC = ({ children }) => {
@@ -48,7 +50,13 @@ export const NavbarProvider: FC = ({ children }) => {
     }
   };
 
+  const removeCartProduct = (id: string) => {
+    setCart((prev) => prev.filter((p) => p.id !== id));
+  };
+
   return (
-    <NavbarCtx.Provider value={{ cart, setCartProduct }}>{children}</NavbarCtx.Provider>
+    <NavbarCtx.Provider value={{ cart, setCartProduct, removeCartProduct }}>
+      {children}
+    </NavbarCtx.Provider>
   );
 };
