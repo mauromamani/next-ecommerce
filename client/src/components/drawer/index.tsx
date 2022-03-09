@@ -4,9 +4,12 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
+  Heading,
+  Stack,
 } from '@chakra-ui/react';
 import { FC, useContext } from 'react';
 
+import { Link } from '@/components/navbar/Link';
 import { NavbarCtx } from '@/context/navbar/NavbarCtx';
 
 export const Drawer: FC = () => {
@@ -16,11 +19,25 @@ export const Drawer: FC = () => {
     <D placement={'right'} onClose={onClose} isOpen={isOpen}>
       <DrawerOverlay />
       <DrawerContent>
-        <DrawerHeader borderBottomWidth="1px">Basic Drawer</DrawerHeader>
+        <DrawerHeader borderBottomWidth="1px">Ecommerce</DrawerHeader>
         <DrawerBody>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <Stack direction={['column']} spacing="4" mt={'4'}>
+            <Link href="/">
+              <Heading size={'sm'} fontWeight="semibold" onClick={onClose}>
+                Inicio
+              </Heading>
+            </Link>
+            <Link href="/products">
+              <Heading size={'sm'} fontWeight="semibold" onClick={onClose}>
+                Hombres
+              </Heading>
+            </Link>
+            <Link href="/cart">
+              <Heading size={'sm'} fontWeight="semibold" onClick={onClose}>
+                Carrito
+              </Heading>
+            </Link>
+          </Stack>
         </DrawerBody>
       </DrawerContent>
     </D>
