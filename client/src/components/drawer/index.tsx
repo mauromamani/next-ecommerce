@@ -1,4 +1,5 @@
 import {
+  CloseButton,
   Drawer as D,
   DrawerBody,
   DrawerContent,
@@ -6,6 +7,7 @@ import {
   DrawerOverlay,
   Heading,
   Stack,
+  Text,
 } from '@chakra-ui/react';
 import { FC, useContext } from 'react';
 
@@ -19,7 +21,13 @@ export const Drawer: FC = () => {
     <D placement={'right'} onClose={onClose} isOpen={isOpen}>
       <DrawerOverlay />
       <DrawerContent>
-        <DrawerHeader borderBottomWidth="1px">Ecommerce</DrawerHeader>
+        <DrawerHeader
+          borderBottomWidth="1px"
+          display={'flex'}
+          justifyContent="space-between">
+          <Text>Ecommerce</Text>
+          <CloseButton onClick={onClose} />
+        </DrawerHeader>
         <DrawerBody>
           <Stack direction={['column']} spacing="4" mt={'4'}>
             <Link href="/">
