@@ -1,9 +1,14 @@
 import { Box, Button, Heading, Stack, Tooltip } from '@chakra-ui/react';
+import { useContext } from 'react';
 import { MdSearch, MdShoppingCart } from 'react-icons/md';
+
+import { NavbarCtx } from '@/context/navbar/NavbarCtx';
 
 import { Link } from './Link';
 
 export const Navbar = () => {
+  const { onOpen } = useContext(NavbarCtx);
+
   return (
     <Box
       display={'flex'}
@@ -54,7 +59,7 @@ export const Navbar = () => {
           </Tooltip>
         </Box>
         <Box>
-          <Button colorScheme={'gray'} variant={'ghost'}>
+          <Button colorScheme={'gray'} variant={'ghost'} onClick={onOpen}>
             Menu
           </Button>
         </Box>
