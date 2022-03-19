@@ -3,6 +3,7 @@ import 'swiper/css/navigation';
 
 import { Box, Heading, Image, Stack } from '@chakra-ui/react';
 import { GetServerSideProps } from 'next';
+import NextLink from 'next/link';
 import { withUrqlClient } from 'next-urql';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -33,8 +34,10 @@ function HomePage() {
           transitionProperty="all"
           transitionDuration="300ms"
           transitionTimingFunction="ease"
-          _hover={{ opacity: '0.9', shadow: 'xl' }}>
-          <Image src="https://cdn.shopify.com/s/files/1/0046/2452/t/7/assets/promo1.jpg?v=17771038893842288667" />
+          _hover={{ opacity: '0.9', shadow: 'xl', cursor: 'pointer' }}>
+          <NextLink href="/products">
+            <Image src="https://cdn.shopify.com/s/files/1/0046/2452/t/7/assets/promo1.jpg?v=17771038893842288667" />
+          </NextLink>
           <Heading position={'absolute'} top="40%" right="40%" color={'white'}>
             Hombres
           </Heading>
@@ -44,8 +47,10 @@ function HomePage() {
           transitionProperty="all"
           transitionDuration="300ms"
           transitionTimingFunction="ease"
-          _hover={{ opacity: '0.9', shadow: 'xl' }}>
-          <Image src="https://cdn.shopify.com/s/files/1/0046/2452/t/7/assets/promo2.jpg?v=8958659307121583012" />
+          _hover={{ opacity: '0.9', shadow: 'xl', cursor: 'pointer' }}>
+          <NextLink href="/products">
+            <Image src="https://cdn.shopify.com/s/files/1/0046/2452/t/7/assets/promo2.jpg?v=8958659307121583012" />
+          </NextLink>
           <Heading position={'absolute'} top="40%" right="40%" color={'white'}>
             Mujeres
           </Heading>
