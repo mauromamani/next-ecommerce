@@ -1,7 +1,7 @@
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { Box } from '@chakra-ui/react';
+import { Box, Heading, Image, Stack } from '@chakra-ui/react';
 import { GetServerSideProps } from 'next';
 import { withUrqlClient } from 'next-urql';
 import { Navigation } from 'swiper';
@@ -27,8 +27,33 @@ function HomePage() {
   }
   return (
     <Box padding="12" paddingTop={{ base: '0', md: '8' }} backgroundColor="gray.100">
+      <Stack direction={['row']} spacing="10" padding={10}>
+        <Box
+          position={'relative'}
+          transitionProperty="all"
+          transitionDuration="300ms"
+          transitionTimingFunction="ease"
+          _hover={{ opacity: '0.9', shadow: 'xl' }}>
+          <Image src="https://cdn.shopify.com/s/files/1/0046/2452/t/7/assets/promo1.jpg?v=17771038893842288667" />
+          <Heading position={'absolute'} top="40%" right="40%" color={'white'}>
+            Hombres
+          </Heading>
+        </Box>
+        <Box
+          position={'relative'}
+          transitionProperty="all"
+          transitionDuration="300ms"
+          transitionTimingFunction="ease"
+          _hover={{ opacity: '0.9', shadow: 'xl' }}>
+          <Image src="https://cdn.shopify.com/s/files/1/0046/2452/t/7/assets/promo2.jpg?v=8958659307121583012" />
+          <Heading position={'absolute'} top="40%" right="40%" color={'white'}>
+            Mujeres
+          </Heading>
+        </Box>
+      </Stack>
+
       <Swiper
-        spaceBetween={50}
+        spaceBetween={20}
         // slidesPerView={2}
         modules={[Navigation]}
         navigation={true}
