@@ -18,24 +18,6 @@ interface Props {
 export const Home: FC<Props> = ({ products }) => {
   return (
     <>
-      <Stack
-        direction={{ base: 'column', lg: 'row' }}
-        spacing="10"
-        marginX={{ base: '0', md: '10' }}
-        marginBottom="10"
-        marginTop={{ base: '10', md: '0' }}>
-        <ImageHeader
-          href="/products"
-          title="Hombres"
-          image="https://cdn.shopify.com/s/files/1/0046/2452/t/7/assets/promo1.jpg?v=17771038893842288667"
-        />
-        <ImageHeader
-          href="/products"
-          title="Mujeres"
-          image="https://cdn.shopify.com/s/files/1/0046/2452/t/7/assets/promo2.jpg?v=8958659307121583012"
-        />
-      </Stack>
-
       <Swiper
         spaceBetween={20}
         modules={[Navigation]}
@@ -56,6 +38,23 @@ export const Home: FC<Props> = ({ products }) => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <Stack
+        direction={{ base: 'column', lg: 'row' }}
+        spacing="10"
+        marginX={{ base: '0', md: '10' }}
+        marginTop="10">
+        <ImageHeader
+          href="/products"
+          title="Hombres"
+          image="https://cdn.shopify.com/s/files/1/0046/2452/t/7/assets/promo1.jpg?v=17771038893842288667"
+        />
+        <ImageHeader
+          href="/products"
+          title="Mujeres"
+          image="https://cdn.shopify.com/s/files/1/0046/2452/t/7/assets/promo2.jpg?v=8958659307121583012"
+        />
+      </Stack>
     </>
   );
 };

@@ -25,7 +25,7 @@ export const Cart: FC = () => {
         <>
           <Divider my="4" />
           <Box>
-            <Heading fontSize={'2xl'}>Total Carrito: ${getTotalCart(cart)}</Heading>
+            <Heading fontSize={'2xl'}>Precio Final: ${getTotalCart(cart)}</Heading>
             <Button colorScheme={'green'} mt="4">
               Comprar Ahora
             </Button>
