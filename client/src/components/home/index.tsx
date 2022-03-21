@@ -18,7 +18,12 @@ interface Props {
 export const Home: FC<Props> = ({ products }) => {
   return (
     <>
-      <Stack direction={['row']} spacing="10" padding={10}>
+      <Stack
+        direction={{ base: 'column', lg: 'row' }}
+        spacing="10"
+        marginX={{ base: '0', md: '10' }}
+        marginBottom="10"
+        marginTop={{ base: '10', md: '0' }}>
         <ImageHeader
           href="/products"
           title="Hombres"

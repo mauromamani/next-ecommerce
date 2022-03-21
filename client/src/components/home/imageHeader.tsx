@@ -11,17 +11,23 @@ interface Props {
 export const ImageHeader: FC<Props> = ({ image, title, href }) => {
   return (
     <Box
-      position={'relative'}
       transitionProperty="all"
       transitionDuration="300ms"
       transitionTimingFunction="ease"
       _hover={{ opacity: '0.9', shadow: 'xl', cursor: 'pointer' }}>
-      <NextLink href={href}>
-        <Image src={image} />
-      </NextLink>
-      <Heading position={'absolute'} top="40%" right="40%" color={'white'}>
-        {title}
-      </Heading>
+      <Box position={'relative'} width="100%">
+        <NextLink href={href}>
+          <Image src={image} width="100%" />
+        </NextLink>
+        <Heading
+          position={'absolute'}
+          top="40%"
+          right="40%"
+          color={'white'}
+          fontSize={{ base: '3xl', md: '4xl' }}>
+          {title}
+        </Heading>
+      </Box>
     </Box>
   );
 };
