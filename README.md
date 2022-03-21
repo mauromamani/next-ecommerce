@@ -6,9 +6,9 @@ A virtual ecommerce website using Next.js, GraphQL, MySQL
 
 ## Preview
 
-![preview](https://github.com/mauromamani/e-commerce/assets/preview.jpg)
-![product-detail](https://github.com/mauromamani/e-commerce/assets/product-detail.jpg)
-![cart](https://github.com/mauromamani/e-commerce/assets/cart.jpg)
+<img src="https://github.com/mauromamani/e-commerce/blob/main/assets/preview.jpg" width="800" height="600" />
+<img src="https://github.com/mauromamani/e-commerce/blob/main/assets/product-detail.jpg" width="800" height="600" />
+<img src="https://github.com/mauromamani/e-commerce/blob/main/assets/cart.jpg" width="800" height="600" />
 
 ## 🚀 Frontend: Next.js + GraphQL
 
