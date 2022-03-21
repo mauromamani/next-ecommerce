@@ -45,3 +45,9 @@ A virtual ecommerce website using Next.js, GraphQL
 
 - [eslint](https://github.com/eslint/eslint)
 - [prettier](https://github.com/prettier/prettier)
+
+### Run application in dev mode(client and server folder)
+
+```
+yarn dev
+```
