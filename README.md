@@ -1,6 +1,6 @@
-# E-commerce
+# E-commerce (🔨 Building...)
 
-## Introduction (Building...🔨)
+## Introduction
 
 A virtual ecommerce website using Next.js, GraphQL
 
