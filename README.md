@@ -1,4 +1,4 @@
-# E-commerce (🔨 Building...)
+# NextJS/GraphQL E-commerce
 
 ## Introduction
 
